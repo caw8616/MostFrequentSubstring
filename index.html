@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<script src="script.js"></script>
+<script type="text/javascript">
+
+    function MostFreqSubstring(str, n) {
+        //Find the substrings
+        //Find the number
+        var map = new Map();
+        var mostFreq = "";
+
+        //var left = 0;
+        var subStr = "";
+
+        //letters in string
+        for (var i = 0; i <= str.length-n+1; i++) {
+            //SLIDING WINDOW
+            subStr += str.charAt(i);
+            if(i >= n-1) {
+            // var substring = str.substring(left, i);
+             if (map.has(subStr)) map.set(subStr, map.get(subStr) + 1);
+             else map.set(subStr, 1);
+
+             if (mostFreq == "" || map.get(subStr) > map.get(mostFreq))
+             mostFreq = subStr;
+             
+             subStr = subStr.substring(1);
+            // left++;
+            }
+        }
+        return mostFreq;
+    }
+
+
+    console.log(MostFreqSubstring("engineering", 2));
+    console.log(MostFreqSubstring("e", 1));
+    console.log(MostFreqSubstring("e", 2));
+    console.log(MostFreqSubstring("", 2));
+    console.log(MostFreqSubstring("eeeeeeeee", 2));
+</script>
+</head>
+<body></body>
+</html>
